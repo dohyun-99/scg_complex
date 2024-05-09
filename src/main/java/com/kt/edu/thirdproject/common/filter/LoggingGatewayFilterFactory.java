@@ -24,14 +24,14 @@ public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<Lo
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
             if (config.isPreLogger()) {
-                log.info("Pre GatewayFilter logging: " + config.getBaseMessage());
+                log.info("🍋Pre GatewayFilter logging: " + config.getBaseMessage());
             }
 
 
             return chain.filter(exchange)
                     .then(Mono.fromRunnable(() -> {
                         if (config.isPostLogger()) {
-                            log.info("Post GatewayFilter logging: " + config.getBaseMessage());
+                            log.info("🍋Post GatewayFilter logging: " + config.getBaseMessage());
                         }
                     }));
         };
